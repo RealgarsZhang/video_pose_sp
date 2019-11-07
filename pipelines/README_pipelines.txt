@@ -11,9 +11,10 @@ Read the README in each directory to learn how to run the model. How to run the 
 
 4. Copy the semantic parsing generated from 2 to pipelines/sp_out. Run process_sp_out.py to process the sp_out folder, and generate the two example.txt files required by Sijie's model. The processed semantic parsing is in the pipelines/parsing directory.
 
-5. Put the semantic parsing in pipelines/parsing, the jpg images in pipelines/process_out, the keypoints.csv in pytorch-openpose , and the two example.txt files to appropriate directory in Sijie's repo. Then run the model.
+5. Put the semantic parsing in pipelines/parsing, the jpg images in pipelines/process_out, the keypoints.csv in pytorch-openpose , and the two example.txt files to appropriate directory in Sijie's repo. Then run the model.The output image are put in gan_out.
 
 
 OTHER INFO:
 1. All filenames, directory names are hardcoded at the beginning of .py files. Check the .py files for more info.
 2. visualize_sp.py is to visualize a semantic parsing. Mainly for debugging. 
+3. To put frame images into a .gif, use the code in ../make_video.

@@ -10,5 +10,7 @@ To get started, read the README in ./pipelines
 
 We have run a result and you can find them in ./person_generatin_spt/gan_out. All intermediate data are kept. 
 
+The milestone output gif files are in ./make_video
+
 
 

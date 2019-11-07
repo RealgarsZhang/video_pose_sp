@@ -1,0 +1,6 @@
+HOW TO RUN:
+
+Put the frame images into ./gan_out. Run make_video.py to generate .gif.
+The frame images are ordered by their ID. The naming convention is <DESCRP>_<ID>.png.
+
+Two milestone output gif files are included.
