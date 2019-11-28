@@ -2,20 +2,11 @@
 # Generate the frame image, to the sampling rate, and cropping required
 # The frames images and the reference image will be padded to 256x256 and put together into a dir.
 
-VIDEO_FILENAME = "dancing.mp4"
-REFERENCE_IMG = "nikeman.jpg"
-OUTPUT_DIR = "preprocess_out"
-SIZE = 256
-Y_MIN = 0
-Y_MAX = 1
-X_MIN = 0.2
-X_MAX = 0.8
-SAMPLING_RATE = 4 # sample the frames to 1:SAMPLING_RATE
-
 
 
 import cv2
 import os
+import argparse
 
 def pad_square(img, size = 256):
     """
@@ -28,9 +19,32 @@ def pad_square(img, size = 256):
     img = cv2.copyMakeBorder(img, top, bottom, left, right, cv2.BORDER_CONSTANT)
     """
     img = cv2.resize(img, (size, size))
-    
-    
     return img
+
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--video_filename', type=str, default='bdj.mp4', help='The video that provides SP and poses')
+parser.add_argument('--reference_img', type=str, default = "bdj.jpg", help="Reference image")
+parser.add_argument('--y_min', type = float, default = 0.0)
+parser.add_argument('--y_max', type = float, default = 1.0)
+parser.add_argument('--x_min', type = float, default = 0.2)
+parser.add_argument('--x_max', type = float, default = 0.8)
+parser.add_argument('--sampling_rate',type = int, default = 8)
+
+args = parser.parse_args()
+
+
+VIDEO_FILENAME = args.video_filename
+REFERENCE_IMG = args.reference_img
+OUTPUT_DIR = "preprocess_out"
+SIZE = 256
+Y_MIN = args.y_min
+Y_MAX = args.y_max
+X_MIN = args.x_min
+X_MAX = args.x_max
+SAMPLING_RATE = args.sampling_rate # sample the frames to 1:SAMPLING_RATE
+
+
+
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)

@@ -1,5 +1,5 @@
 GAN_OUT_DIR = "gan_out"
-GIF_NAME = "nikeman-walking.gif"
+GIF_NAME = "output.gif"
 FPS = 2
 #SIZE = 256
 
@@ -11,7 +11,7 @@ import numpy as np
 
 img_fns = []
 for fn in os.listdir(GAN_OUT_DIR):
-    if fn.split(".")[-1] not in ("png","jpg","jpeg"):
+    if fn.split(".")[-1] not in ("png","jpg","jpeg") or len(fn.split('.')[0].split('_'))<2:
         continue
     img_fns.append(fn)
 

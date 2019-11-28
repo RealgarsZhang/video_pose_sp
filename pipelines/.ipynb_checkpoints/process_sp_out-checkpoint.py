@@ -63,15 +63,23 @@ print(LIP_WORDS)
 print("SPT_DIC:")
 print(SPT_DIC)
 
+
+import os
+import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--reference_img', type=str, default='bdj.jpg', help='Ref image')
+args = parser.parse_args()
+
 SP_OUT_DIR = "sp_out"
 PREPROCESS_OUT_DIR = "preprocess_out"
-REFERENCE_IMG = "nikeman.jpg"
+REFERENCE_IMG = args.reference_img
 DST_DIR = "parsing"
 A_EXAMPLE_TXT = "test_A_example.txt" # This file indicates the images which provide appearances
 B_EXAMPLE_TXT = "test_B_example.txt" # Indicates the GT images for result. The GT is no use for us. But this is necessary for running the model
 
-import os
-import numpy as np
+
 
 
 # put the semantic parsing to the format required by SPT
