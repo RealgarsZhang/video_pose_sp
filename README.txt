@@ -13,7 +13,7 @@ After establishing appropriate environments(spenv_light for MMAN and sijieenv fo
 To run the model, you can run the following. You can configure parameters at the beginning.
 $ bash gen_keyframe_gif.sh
 
-After running, to make it clean:
+After running, to remove intermediate files:
 $ bash make_clean.sh
 
 You might see some errors and exceptions when running the above scripts. They are normal.
