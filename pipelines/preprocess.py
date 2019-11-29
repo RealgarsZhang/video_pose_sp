@@ -22,13 +22,13 @@ def pad_square(img, size = 256):
     return img
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--video_filename', type=str, default='bdj.mp4', help='The video that provides SP and poses')
+parser.add_argument('--video_filename', type=str, default='tachi1.mp4', help='The video that provides SP and poses')
 parser.add_argument('--reference_img', type=str, default = "bdj.jpg", help="Reference image")
 parser.add_argument('--y_min', type = float, default = 0.0)
 parser.add_argument('--y_max', type = float, default = 1.0)
 parser.add_argument('--x_min', type = float, default = 0.2)
 parser.add_argument('--x_max', type = float, default = 0.8)
-parser.add_argument('--sampling_rate',type = int, default = 8)
+parser.add_argument('--sampling_rate',type = int, default = 3)
 
 args = parser.parse_args()
 

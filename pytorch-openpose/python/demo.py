@@ -55,4 +55,4 @@ for x, y, w, is_left in hands_list:
 
 canvas = util.draw_handpose(canvas, all_hand_peaks)
 
-cv2.imwrite("res.jpg",canvas[:, :, [2, 1, 0]])
+cv2.imwrite("res.jpg",canvas[:, :, [0,1,2]])
