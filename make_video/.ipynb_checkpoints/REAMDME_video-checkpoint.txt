@@ -3,4 +3,10 @@ HOW TO RUN:
 Put the frame images into ./gan_out. Run make_video.py to generate .gif.
 The frame images are ordered by their ID. The naming convention is <DESCRP>_<ID>.png.
 
-Two milestone output gif files are included.
+RESULTS:
+keyframe_fake_res: keeps the keyframe generation results.
+monkeynet_gan_res: MonkeyNet result. Input is a real reference image and a GAN generated video.
+monkeynet_real_res: MonkeyNet result. Input is a real reference image and a real video. As baseline for comparison. Also to test the functionality of MonkeyNet.
+
+gif naming convention: videoname followed by reference image name.
+

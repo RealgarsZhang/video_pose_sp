@@ -5,7 +5,8 @@ The frame images are ordered by their ID. The naming convention is <DESCRP>_<ID>
 
 RESULTS:
 keyframe_fake_res: keeps the keyframe generation results.
-res: the results output by MonkeyNet. Some filenames end with "real", meaning they are generated from real video and images by MonkeyNet.
+monkeynet_gan_res: MonkeyNet result. Input is a real reference image and a GAN generated video.
+monkeynet_real_res: MonkeyNet result. Input is a real reference image and a real video. As baseline for comparison. Also to test the functionality of MonkeyNet.
 
 gif naming convention: videoname followed by reference image name.
 
