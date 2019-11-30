@@ -29,7 +29,7 @@ Following the keyframe generation, you can run video improvement as follows:
     * http://drive.google.com/uc?id=1IvobLDbRiBgZr3ryCRrWL8xDbMZ-KnpF
     * https://yadi.sk/d/6vqE41BTZKIAKQ 
    and save them to ./checkpoints/
-$ bash slowmo_monkey.sh -d <driving-video> -x <smoothing-scale> -f <output_fps> -s <source-image> -o <out-file>
+$ bash slomo_monkey.sh -d <driving-video> -x <smoothing-scale> -f <output_fps> -s <source-image> -o <out-file>
 
 
 INPUT AND OUTPUT:
