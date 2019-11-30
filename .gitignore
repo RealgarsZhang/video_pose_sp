@@ -2,3 +2,5 @@ checkpoints
 *.tar
 *.pth
 *.pt
+monkey_GAN_out
+misc
