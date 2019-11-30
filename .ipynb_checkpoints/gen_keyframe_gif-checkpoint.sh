@@ -7,6 +7,9 @@
  x_max=0.8
  sampling_rate=128
  
+ conda activate spenv_light # The environment for MMAN
+ echo "Environment changed to spenv_light"
+ 
  echo "Preprocessing the video frames"
  
  # preprocess the images
@@ -15,8 +18,7 @@
  python preprocess.py --video_filename $video_filename --reference_img $reference_img --y_min $y_min --y_max $y_max --x_min $x_min --x_max $x_max --sampling_rate $sampling_rate
  
  # get the semantic parsing with MMAN
- conda activate spenv_light # The environment for MMAN
- echo "Environment changed to spenv_light"
+ 
  cp -R preprocess_out ../SP_MMAN/Human/test_LIP_A
  cd ../SP_MMAN/Human
  mkdir test_LIP_B

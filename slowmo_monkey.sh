@@ -3,9 +3,11 @@
 # Example Usage:
 # ./slowmo_monkey.sh -d driving-video.gif -x8 -f32 -s source-img.jpeg -o out-file.gif
 
+slomo_ckpt_url='http://drive.google.com/uc?id=1IvobLDbRiBgZr3ryCRrWL8xDbMZ-KnpF'
+monkey_ckpt_url='https://yadi.sk/d/6vqE41BTZKIAKQ'
 
-scale=8
-fps=32
+slomo_ckpt='./checkpoints/SuperSloMo.ckpt'
+monkey_ckpt='./checkpoints/taichi-cpk.pth.tar'
 
 while getopts "d:s:o:x:f:" OPT
 do case $OPT in
@@ -16,25 +18,37 @@ do case $OPT in
     f) fps=$OPTARG ;;
 esac done
 
-d_in_name=$(echo $driving_video | cut -f1 -d.)
-d_out_name=$d_in_name-${scale}x-${fps}fps
+if [[ ! -z "$scale" ]] && [[ ! -z "$fps" ]]
+then
+    if [[ ! -f "$slomo_ckpt" ]]
+    then
+        mkdir -p checkpoints
+        gdown -O $slomo_ckpt $slomo_ckpt_url
+    fi
+    d_in_name=$(echo $driving_video | cut -f1 -d.)
+    d_out_name=$d_in_name-${scale}x-${fps}fps
+    ./Super-SloMo/video_to_slomo.py \
+        --checkpoint $slowmo_ckpt \
+        --ffmpeg $(dirname $(realpath $(which ffmpeg))) \
+        --video $driving_video \
+        --output $d_out_name.mp4 \
+        --sf ${scale} --fps ${fps}
+    ffmpeg -i $d_out_name.mp4 $d_out_name.gif && rm $d_out_name.mp4
+    driving_video=$d_out_name.gif
+fi
 
-../Super-SloMo/video_to_slomo.py \
-    --checkpoint '../Super-SloMo/SuperSloMo.ckpt' \
-    --ffmpeg $(dirname $(realpath $(which ffmpeg))) \
-    --video $driving_video \
-    --output $d_out_name.mp4 \
-    --sf ${scale} --fps ${fps}
-    
-ffmpeg -i $d_out_name.mp4 $d_out_name.gif && rm $d_out_name.mp4
-
-smooth_driving_video=$d_out_name.gif
-
-conda activate monkey-net
-
-python ../monkey-net/demo.py \
-    --config '../monkey-net/config/taichi.yaml' \
-    --driving_video $smooth_driving_video \
-    --source_image $source_image \
-    --checkpoint '../monkey-net/taichi-cpk.pth.tar' \
-    --out_file $out_file
+if [[ ! -z "$source_image" ]] && [[ ! -z "$out_file" ]]
+then
+    if [[ -f "$monkey_ckpt" ]]
+    then
+        python ./monkey-net/demo.py \
+            --config './monkey-net/config/taichi.yaml' \
+            --driving_video $driving_video \
+            --source_image $source_image \
+            --checkpoint $monkey_ckpt \
+            --out_file $out_file
+    else
+        echo "Error: $monkey_ckpt not found!"
+        echo "Please manually download MonkeyNet checkpoint at $monkey_ckpt_url"
+    fi
+fi
