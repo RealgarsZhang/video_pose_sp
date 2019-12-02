@@ -7,7 +7,7 @@ pytorch-openpose: https://github.com/Hzzone/pytorch-openpose
 Super SloMo: https://github.com/avinashpaliwal/Super-SloMo
 Monkey Net: https://github.com/AliaksandrSiarohin/monkey-net
 
-We write a README(README_pipelines.txt, README_MMAN.txt, etc) for each directory except Super-SloMo and monkey-net. Please read them to learn what code we wrote and how to run the model. Before running each model, please set the environment and download pretrained models accordingly. For person_generation_spt and pytorch-openpose, just follow the instructions from the original repos. For SP_MMAN, please use CPU. For Super-SloMo and monkey-net, please follow the instructions in VIDEO IMPROVEMENT. 
+We write a README(README_pipelines.txt, README_MMAN.txt, etc) for each directory except Super-SloMo and monkey-net. Please read them to learn what code we wrote and how to run the model. Before running each model, please set the environment and download pretrained models accordingly. For person_generation_spt and pytorch-openpose, just follow the instructions from the original repos. For SP_MMAN, please use CPU. For Super-SloMo and monkey-net, please follow the instructions in VIDEO SMOOTHING. 
 
 
 KEY FRAME GENERATION:
@@ -22,8 +22,8 @@ $ bash make_clean.sh
 You might see some errors and exceptions when running the above scripts. They are normal.
 
 
-VIDEO IMPROVEMENT
-Following the keyframe generation, you can run video improvement as follows:
+VIDEO SMOOTHING
+Following the keyframe generation, you can run video smoothing as follows:
 1. install requirements_slowmo_monkey.txt in a new python environment
 2. download pretrained model from
     * http://drive.google.com/uc?id=1IvobLDbRiBgZr3ryCRrWL8xDbMZ-KnpF
